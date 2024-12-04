@@ -5,7 +5,14 @@
   align-items: center;
 
   canvas {
-    border: 1px solid grey;
-    box-shadow: 0 0 1rem grey;
+    border: 1px solid #666666;
+    box-shadow: 0 0 1rem #666666;
+  }
+
+  &.isActive {
+    canvas {
+      border-color: #ff0000;
+      cursor: crosshair;
+    }
   }
 }
