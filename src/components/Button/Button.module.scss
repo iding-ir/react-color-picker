@@ -3,4 +3,9 @@
   padding: 1rem;
   color: #323232;
   background-color: #dedede;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
