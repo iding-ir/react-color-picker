@@ -1,4 +1,4 @@
-import { BackgroundInput } from "../BackgroundInput";
+import { BackgroundInput } from "../../features/background/components/BackgroundInput";
 import { ColorPicker } from "../ColorPicker";
 import { Uploader } from "../Uploader";
 import styles from "./Controls.module.scss";

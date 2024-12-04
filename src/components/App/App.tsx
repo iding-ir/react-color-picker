@@ -1,13 +1,10 @@
-import { Canvas } from "../Canvas";
-import { Controls } from "../Controls";
-import styles from "./App.module.scss";
+import { Editor } from "../Editor";
+import { Wrappers } from "../Wrappers/Wrappers";
 
 export const App = () => {
   return (
-    <main className={styles.container}>
-      <Controls />
-
-      <Canvas />
-    </main>
+    <Wrappers>
+      <Editor />
+    </Wrappers>
   );
 };
