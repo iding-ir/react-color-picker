@@ -15,7 +15,7 @@ export const useColorPicker = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!canvas) {
+    if (!canvas || !isActive) {
       return;
     }
 
