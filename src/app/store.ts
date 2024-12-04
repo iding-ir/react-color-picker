@@ -6,8 +6,9 @@ import {
 } from "@reduxjs/toolkit";
 
 import { backgroundSlice } from "../features/background";
+import { photoSlice } from "../features/photo";
 
-const rootReducer = combineSlices(backgroundSlice);
+const rootReducer = combineSlices(backgroundSlice, photoSlice);
 
 export const store = configureStore({
   reducer: rootReducer,
