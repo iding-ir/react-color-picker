@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useEffect, useRef } from "react";
 
 import { useAppSelector } from "../../app/hooks";
-import { CANVAS_WIDTH } from "../../constants/canvas";
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from "../../constants/canvas";
 import { selectBackgroundColor } from "../../features/background";
 import { selectColorPickerState } from "../../features/colorPicker";
 import { selectPhoto } from "../../features/photo";
@@ -41,9 +41,9 @@ export const Canvas = () => {
 
   return (
     <div className={classNames}>
-      <canvas ref={backgroundRef} width={CANVAS_WIDTH} height={CANVAS_WIDTH} />
+      <canvas ref={backgroundRef} width={CANVAS_WIDTH} height={CANVAS_HEIGHT} />
 
-      <canvas ref={canvasRef} width={CANVAS_WIDTH} height={CANVAS_WIDTH} />
+      <canvas ref={canvasRef} width={CANVAS_WIDTH} height={CANVAS_HEIGHT} />
     </div>
   );
 };
