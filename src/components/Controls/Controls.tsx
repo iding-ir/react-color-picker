@@ -5,12 +5,12 @@ import styles from "./Controls.module.scss";
 
 export const Controls = () => {
   return (
-    <nav className={styles.container}>
+    <aside className={styles.container}>
       <Uploader />
 
       <ColorPicker />
 
       <BackgroundInput />
-    </nav>
+    </aside>
   );
 };
