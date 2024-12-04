@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import { useAppDispatch } from "../app/hooks";
 import { setPickedColor } from "../features/colorPicker";
+import { arrayToHex } from "../utils/array-to-hex";
 import { pickColorFromCanvas } from "../utils/pick-color-from-canvas";
 
 export const useColorPicker = ({
@@ -27,7 +28,7 @@ export const useColorPicker = ({
         return;
       }
 
-      dispatch(setPickedColor(color));
+      dispatch(setPickedColor(arrayToHex(color)));
     };
 
     canvas.addEventListener("pointerdown", onPointerDown);

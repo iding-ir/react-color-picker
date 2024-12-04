@@ -3,7 +3,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { createAppSlice } from "../createAppSlice";
 
 export interface ColorPickerState {
-  color: Uint8ClampedArray | null;
+  color: string | null;
   active: boolean;
 }
 
@@ -17,7 +17,7 @@ export const colorPickerSlice = createAppSlice({
   initialState,
   reducers: (create) => ({
     setPickedColor: create.reducer(
-      (state, { payload }: PayloadAction<Uint8ClampedArray>) => {
+      (state, { payload }: PayloadAction<string>) => {
         state.color = payload;
       },
     ),
@@ -29,6 +29,7 @@ export const colorPickerSlice = createAppSlice({
     }),
   }),
   selectors: {
+    selectPickedColor: ({ color }) => color,
     selectColorPickerState: ({ active }) => active,
   },
 });
@@ -36,4 +37,5 @@ export const colorPickerSlice = createAppSlice({
 export const { setPickedColor, enableColorPicker, disableColorPicker } =
   colorPickerSlice.actions;
 
-export const { selectColorPickerState } = colorPickerSlice.selectors;
+export const { selectPickedColor, selectColorPickerState } =
+  colorPickerSlice.selectors;

@@ -2,27 +2,35 @@ import clsx from "clsx";
 import { useEffect, useRef } from "react";
 
 import { useAppSelector } from "../../app/hooks";
-import { selectColorPickerState } from "../../features/colorPicker";
+import { CANVAS_WIDTH } from "../../constants/canvas";
+import {
+  selectColorPickerState,
+  selectPickedColor,
+} from "../../features/colorPicker";
 import { selectPhoto } from "../../features/photo";
+import { useCanvasBackground } from "../../hooks/use-canvas-background";
 import { useColorPicker } from "../../hooks/use-color-picker";
 import { addImageToCanvas } from "../../utils/add-image-to-canvas";
 import styles from "./Canvas.module.scss";
 
 export const Canvas = () => {
-  const ref = useRef<HTMLCanvasElement>(null);
+  const backgroundRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const photo = useAppSelector(selectPhoto);
-  const isActive = useAppSelector(selectColorPickerState);
-  useColorPicker({ canvas: ref.current, isActive });
+  const isColorPickerActive = useAppSelector(selectColorPickerState);
+  const pickedColor = useAppSelector(selectPickedColor);
+  useColorPicker({ canvas: canvasRef.current, isActive: isColorPickerActive });
+  useCanvasBackground({ canvas: backgroundRef.current, color: pickedColor });
 
   useEffect(() => {
-    if (!ref.current || !photo?.src) {
+    if (!canvasRef.current || !photo?.src) {
       return;
     }
 
     const { src, width, height } = photo;
 
     addImageToCanvas({
-      canvas: ref.current,
+      canvas: canvasRef.current,
       url: src,
       width,
       height,
@@ -30,12 +38,14 @@ export const Canvas = () => {
   }, [photo]);
 
   const classNames = clsx(styles.container, {
-    [styles.isActive]: isActive,
+    [styles.isActive]: isColorPickerActive,
   });
 
   return (
     <div className={classNames}>
-      <canvas ref={ref} width={800} height={600} />
+      <canvas ref={backgroundRef} width={CANVAS_WIDTH} height={CANVAS_WIDTH} />
+
+      <canvas ref={canvasRef} width={CANVAS_WIDTH} height={CANVAS_WIDTH} />
     </div>
   );
 };
