@@ -1,8 +1,8 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 
+import { DEFAULT_BACKGROUND } from "../../constants/canvas";
 import { Color } from "../../types/color";
 import { createAppSlice } from "../createAppSlice";
-import { DEFAULT_BACKGROUND } from "./background";
 
 export interface BackgroundState {
   color: Color;

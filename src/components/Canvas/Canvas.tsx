@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import { useAppSelector } from "../../app/hooks";
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from "../../constants/canvas";
@@ -8,7 +8,7 @@ import { selectColorPickerState } from "../../features/colorPicker";
 import { selectPhoto } from "../../features/photo";
 import { useCanvasBackground } from "../../hooks/use-canvas-background";
 import { useColorPicker } from "../../hooks/use-color-picker";
-import { addImageToCanvas } from "../../utils/add-image-to-canvas";
+import { usePhoto } from "../../hooks/use-photo";
 import styles from "./Canvas.module.scss";
 
 export const Canvas = () => {
@@ -17,23 +17,9 @@ export const Canvas = () => {
   const photo = useAppSelector(selectPhoto);
   const isColorPickerActive = useAppSelector(selectColorPickerState);
   const pickedColor = useAppSelector(selectBackgroundColor);
+  usePhoto({ canvas: canvasRef.current, photo });
   useColorPicker({ canvas: canvasRef.current, isActive: isColorPickerActive });
   useCanvasBackground({ canvas: backgroundRef.current, color: pickedColor });
-
-  useEffect(() => {
-    if (!canvasRef.current || !photo?.src) {
-      return;
-    }
-
-    const { src, width, height } = photo;
-
-    addImageToCanvas({
-      canvas: canvasRef.current,
-      url: src,
-      width,
-      height,
-    });
-  }, [photo]);
 
   const classNames = clsx(styles.container, {
     [styles.isActive]: isColorPickerActive,

@@ -14,8 +14,10 @@ export const addImageToCanvas = ({
   image.src = url;
 
   image.onload = () => {
-    if (ctx) {
-      ctx.drawImage(image, 0, 0, width, height);
+    if (!ctx) {
+      return;
     }
+
+    ctx.drawImage(image, 0, 0, width, height);
   };
 };

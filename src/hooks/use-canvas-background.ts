@@ -18,5 +18,5 @@ export const useCanvasBackground = ({
       canvas,
       color,
     });
-  }, [color]);
+  }, [canvas, color]);
 };
