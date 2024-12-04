@@ -15,11 +15,18 @@ export const Uploader = ({ children }: { children: ReactNode }) => {
       reader.onabort = () => console.log("file reading was aborted");
       reader.onerror = () => console.log("file reading has failed");
       reader.onload = () => {
-        dispatch(
-          addPhoto({
-            src: reader.result as string,
-          }),
-        );
+        const img = new Image();
+        img.src = reader.result as string;
+
+        img.onload = () => {
+          dispatch(
+            addPhoto({
+              src: reader.result as string,
+              width: img.width,
+              height: img.height,
+            }),
+          );
+        };
       };
       reader.readAsDataURL(file);
     });
