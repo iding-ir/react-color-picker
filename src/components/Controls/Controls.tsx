@@ -8,7 +8,7 @@ export const Controls = () => {
   return (
     <aside className={styles.container}>
       <Uploader>
-        <Button onClick={() => null} label="Upload" />
+        <Button label="Upload" />
       </Uploader>
 
       <ColorPicker />

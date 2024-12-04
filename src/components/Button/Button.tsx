@@ -7,7 +7,7 @@ export const Button = ({
 }: {
   label: string;
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }) => {
   return (
     <button disabled={disabled} className={styles.container} onClick={onClick}>
