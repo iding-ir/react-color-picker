@@ -3,10 +3,8 @@ import { useEffect, useRef } from "react";
 
 import { useAppSelector } from "../../app/hooks";
 import { CANVAS_WIDTH } from "../../constants/canvas";
-import {
-  selectColorPickerState,
-  selectPickedColor,
-} from "../../features/colorPicker";
+import { selectBackgroundColor } from "../../features/background";
+import { selectColorPickerState } from "../../features/colorPicker";
 import { selectPhoto } from "../../features/photo";
 import { useCanvasBackground } from "../../hooks/use-canvas-background";
 import { useColorPicker } from "../../hooks/use-color-picker";
@@ -18,7 +16,7 @@ export const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const photo = useAppSelector(selectPhoto);
   const isColorPickerActive = useAppSelector(selectColorPickerState);
-  const pickedColor = useAppSelector(selectPickedColor);
+  const pickedColor = useAppSelector(selectBackgroundColor);
   useColorPicker({ canvas: canvasRef.current, isActive: isColorPickerActive });
   useCanvasBackground({ canvas: backgroundRef.current, color: pickedColor });
 

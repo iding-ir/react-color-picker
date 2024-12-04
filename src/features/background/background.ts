@@ -1,3 +1,3 @@
-import { Color } from "../../components/types/color";
+import { Color } from "../../types/color";
 
 export const DEFAULT_BACKGROUND: Color = "#ffffff";

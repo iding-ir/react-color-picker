@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
-import { enableColorPicker } from "../../features/colorPicker";
-import { Button } from "../Button";
+import { enableColorPicker } from "../..";
+import { Button } from "../../../../components/Button";
 import styles from "./ColorPicker.module.scss";
 
 export const ColorPicker = () => {
