@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { PhotoType } from "../features/photo/photo";
-import { addImageToCanvas } from "../utils/add-image-to-canvas";
+import { addImageToCanvas } from "../methods/add-image-to-canvas";
 
 export const usePhoto = ({
   canvas,

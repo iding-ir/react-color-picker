@@ -4,7 +4,7 @@ import Dropzone from "react-dropzone";
 import { useAppDispatch } from "../../../../app/hooks";
 import { Button } from "../../../../components/Button";
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from "../../../../constants/canvas";
-import { fitImageInsideCanvas } from "../../../../utils/fit-image-inside-canvas";
+import { fitImageInsideCanvas } from "../../../../methods/fit-image-inside-canvas";
 import { ALLOWED_PHOTO_TYPES } from "../../photo";
 import { addPhoto } from "../../photo-slice";
 

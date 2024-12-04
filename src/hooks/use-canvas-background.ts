@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { setCanvasBackground } from "../utils/set-canvas-background";
+import { setCanvasBackground } from "../methods/set-canvas-background";
 
 export const useCanvasBackground = ({
   canvas,

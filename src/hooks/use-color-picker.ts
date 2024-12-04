@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 import { useAppDispatch } from "../app/hooks";
 import { setBackgroundColor } from "../features/background";
+import { pickColorFromCanvas } from "../methods/pick-color-from-canvas";
 import { arrayToHex } from "../utils/array-to-hex";
-import { pickColorFromCanvas } from "../utils/pick-color-from-canvas";
 
 export const useColorPicker = ({
   canvas,

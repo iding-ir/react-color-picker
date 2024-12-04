@@ -1,50 +1,124 @@
-# React + TypeScript + Vite
+# Index
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [About](#about)
+- [Tech stack](#tech-stack)
+- [Structure](#structure)
+- [Decision making](#decision-making)
+- [Choosing libraries](#choosing-libraries)
+- [Areas for improvement](#areas-for-improvement)
+- [Installation](#installation)
+- [Run](#run)
 
-Currently, two official plugins are available:
+## About
+A mock React app that allows user to change the background of their canvas using either a:
+- color picker
+- text input
+- color swatch
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
+- `TypeScript`.
+- `React`.
+- `Redux Toolkit` for state management, querying, caching, and handling effects.
+- `react-colorful` for color picker.
+- `react-dropzone` for uploading photos
+- `SCSS Modules` for component-scoped styles.
+- `Vite` for building the project.
+- `clsx` utility lib for CSS class names.
 
-## Expanding the ESLint configuration
+## Structure
+I used Vite to build the application. [Why Vite?](https://vite.dev/guide/why).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+I followed the folder structure that mirrors Redux Toolkit [Feature-based State Structure](https://redux.js.org/tutorials/essentials/part-2-app-structure).
 
-- Configure the top-level `parserOptions` property like this:
+I set up:
+  - ESLint and TypeScript for static checking/testing.
+  - Prettier for keeping the code tidy.
+  - sort imports to keep the code organized.
+  - SCSS modules to prefix class names with component names.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+  ### Folder structure
+
+```
+public/                       # Public files and assets (Vite convention)
+src/                          # App files and assets
+  |- app/                     # Redux Toolkit folder that hosts store provider, hooks and the store.
+  |- components/              # React components
+  |- constants/               # Default values and app constants to hard-coded avoid magic numbers.
+  |- features/                # RTK convention
+     |- background/                  # Feature folder (RTK convention)
+        |- components/               # Feature-related components (RTK convention)
+        |- background-slice.tsx      # Slice configuration (actions, reducers and selectors)
+        |- background-middleware.ts  # Managing effects using RTK Listener Middlewares
+        |- index.ts                  # Types, tests, constants and other feature related files can go here.
+     |- colorPicker/
+     |- photo/
+  |- hooks/                         # React hooks
+  |- methods/                       # App methods
+  |- styles/                        # General styles.
+  |- types/                         # Type declarations that may not belong to features.
+  |- utils/                         # Good practice to keep reusable functions in utils
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Decision making
+### Vite
+For this project I preferred Vite over Create React App, Parcel, Webpack, etc. Reasoning:
+- Ease of setting up a front-end app and abstracting configurations.
+- Having its own compiler engine.
+- Built-in test library.
+- Additional features similar to Lerna.js
+- Being modular and extendable by the community
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Redux Toolkit
+Main reasons to use:
+- Avoiding Redux boilerplates.
+- Introducing more structure to the folder and state trees.
+- Built in features like Listener Middlewares, RTK Query, Built-in Thunk, caching...
+- Better dev experience and easier debugging using browser extensions.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### SCSS Modules
+I prefer SCSS Modules to CSS, CSS in JS, BEM, etc. for these reasons:
+- It scopes styles to a module/component.
+- It comes with all advantages of a pre-processor like SASS.
+- Unlike SASS, it's written like CSS
+- Unlike CSS in JS, it respects division of concerns.
+- Unlike BEM, it respect semantic naming.
+- Unlike Pure CSS, it takes less code.
+
+### Canvas technologies
+Unlike [Canvas Editor](https://github.com/iding-ir/react-canvas-editor), I didn't use external libraries to render canvas.
+This was mainly because:
+- Assignment requirements.
+- CF uses canvas technologies at a lower level.
+
+## Choosing libraries
+I choose the tooling based on the requirements and resources.
+
+Generally speaking, when deciding on a library, I consider:
+- How reliable the developer is and how is the future of the library like.
+- How strong the community is.
+- How often it is maintained.
+- If I develop it myself, do I have the resources to update, maintain and document it regularly?
+- What might the learning curves for the new devs be if I develop it myself?
+
+For these reasons I used `react-dropzone`, `react-colorful` and `clsx` in this assignment, but I didn't invest in creating a universal color picker from the scratch either.
+
+## Areas for improvement
+- Writing tests: unit, integration, e2e.
+- Improve accessibility.
+- Error handling and error boundary.
+- Move app logics out of some component to keep them clean and reusable.
+- Use advanced React techniques like Ref Forwarding in some cases.
+
+## Installation
+
+Install dependencies:
+```
+yarn install
+```
+
+## Run
+
+Dev environment:
+```
+yarn dev
 ```
