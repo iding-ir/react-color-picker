@@ -1,5 +1,6 @@
 # Index
 
+- [Updates](#update)
 - [About](#about)
 - [Tech stack](#tech-stack)
 - [Structure](#structure)
@@ -8,6 +9,13 @@
 - [Areas for improvement](#areas-for-improvement)
 - [Installation](#installation)
 - [Run](#run)
+
+## Update
+In recent development, the following changes are made:
+- Color Picker is converted to a re-usable package with its own internal state (Redux Context)
+- A magnifier is added to the color picker.
+- Some optional props are exposed to users (magnifier radius, grid size, width of color preview rim, etc.)
+- Some comments are added to the package to briefly explain the API.
 
 ## About
 A mock React app that allows user to change the background of their canvas using either a:
