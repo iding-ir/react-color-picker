@@ -6,20 +6,13 @@ import {
 } from "@reduxjs/toolkit";
 
 import { backgroundSlice } from "../features/background";
-import { backgroundListenerMiddleware } from "../features/background/background-middleware";
-import { colorPickerSlice } from "../features/colorPicker";
 import { photoSlice } from "../features/photo";
 
-const rootReducer = combineSlices(
-  backgroundSlice,
-  photoSlice,
-  colorPickerSlice,
-);
+const rootReducer = combineSlices(backgroundSlice, photoSlice);
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).prepend(backgroundListenerMiddleware.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

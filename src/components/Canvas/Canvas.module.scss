@@ -1,8 +1,8 @@
 .container {
   position: relative;
-  flex-grow: 10;
+  box-shadow: 0 0 1rem #666666;
 
-  canvas {
+  .canvas {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -11,13 +11,10 @@
     width: auto;
     height: auto;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 1rem #666666;
   }
 
   &.isActive {
-    canvas {
-      border-color: #ff0000;
-      cursor: crosshair;
-    }
+    box-shadow: 0 0 2rem #ff0000;
+    cursor: none;
   }
 }

@@ -3,7 +3,7 @@ import Dropzone from "react-dropzone";
 
 import { useAppDispatch } from "../../../../app/hooks";
 import { Button } from "../../../../components/Button";
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from "../../../../constants/canvas";
+import { SIZE } from "../../../../constants/canvas";
 import { fitImageInsideCanvas } from "../../../../methods/fit-image-inside-canvas";
 import { ALLOWED_PHOTO_TYPES } from "../../photo";
 import { addPhoto } from "../../photo-slice";
@@ -26,8 +26,8 @@ export const Uploader = () => {
             const { width, height } = fitImageInsideCanvas({
               imageWidth: img.width,
               imageHeight: img.height,
-              canvasWidth: CANVAS_WIDTH,
-              canvasHeight: CANVAS_HEIGHT,
+              canvasWidth: SIZE.width,
+              canvasHeight: SIZE.height,
             });
 
             dispatch(addPhoto({ src: reader.result as string, width, height }));

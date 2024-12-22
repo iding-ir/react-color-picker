@@ -4,10 +4,14 @@ import styles from "./Editor.module.scss";
 
 export const Editor = () => {
   return (
-    <main className={styles.container}>
-      <Controls />
+    <section className={styles.container}>
+      <aside>
+        <Controls />
+      </aside>
 
-      <Canvas />
-    </main>
+      <main>
+        <Canvas />
+      </main>
+    </section>
   );
 };
