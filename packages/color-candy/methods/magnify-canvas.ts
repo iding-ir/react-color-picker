@@ -24,10 +24,15 @@ export const magnifyCanvas = ({
     return;
   }
 
-  const count = radius * 2 + 1;
-  const imageData = canvasCtx.getImageData(x, y, count, count);
-  magnifier.width = count * size;
-  magnifier.height = count * size;
+  const diameter = radius * 2 + 1;
+  const imageData = canvasCtx.getImageData(
+    x - diameter / 2,
+    y - diameter / 2,
+    diameter,
+    diameter,
+  );
+  magnifier.width = diameter * size;
+  magnifier.height = diameter * size;
 
   // Draw magnified image
   magnifierCtx.clearRect(0, 0, magnifier.width, magnifier.height);
@@ -40,7 +45,7 @@ export const magnifyCanvas = ({
   // Draw grids
   magnifierCtx.strokeStyle = "rgba(0,0,0,1)";
 
-  for (let i = 0; i <= count; i++) {
+  for (let i = 0; i <= diameter; i++) {
     magnifierCtx.beginPath();
     magnifierCtx.moveTo(i * size, 0);
     magnifierCtx.lineTo(i * size, magnifier.height);
