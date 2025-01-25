@@ -9,7 +9,7 @@ export const pickColorFromCanvas = ({
   x: number;
   y: number;
 }) => {
-  const context = canvas.getContext("2d");
+  const context = canvas.getContext("2d", { willReadFrequently: true });
 
   if (!context) {
     return;

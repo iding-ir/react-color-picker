@@ -9,7 +9,7 @@ export const addImageToCanvas = ({
   width: number;
   height: number;
 }) => {
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
   const image = new Image();
   image.src = url;
 
