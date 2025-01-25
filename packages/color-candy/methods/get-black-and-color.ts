@@ -1,4 +1,4 @@
-export const getReadableColor = (backgroundColor: string): string => {
+export const getBlackAndWhiteColor = (backgroundColor: string): string => {
   // Remove the hash if present
   if (backgroundColor.startsWith("#")) {
     backgroundColor = backgroundColor.slice(1);

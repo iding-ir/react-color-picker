@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 import { useColorCandy } from "../../context/hook";
+import { useHover } from "../../hooks/use-hover";
 import { Magnifier } from "../Magnifier";
 import styles from "./ColorCandy.module.scss";
 
@@ -8,16 +9,17 @@ export const ColorCandy = ({
   onSelect,
   children,
 }: {
-  onSelect: (color: Uint8ClampedArray) => void;
+  onSelect: (color: string) => void;
   children: ReactNode;
 }) => {
-  const { isActive } = useColorCandy();
+  useHover();
+  const { isHovered, isActive } = useColorCandy();
 
   return (
     <div className={styles.container}>
       {children}
 
-      {isActive && <Magnifier onSelect={onSelect} />}
+      {isActive && isHovered && <Magnifier onSelect={onSelect} />}
     </div>
   );
 };

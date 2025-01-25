@@ -1,3 +1,5 @@
+import { arrayToHex } from "../../../src/utils/array-to-hex";
+
 export const pickColorFromCanvas = ({
   canvas,
   x,
@@ -13,5 +15,5 @@ export const pickColorFromCanvas = ({
     return;
   }
 
-  return context.getImageData(x, y, 1, 1).data;
+  return arrayToHex(context.getImageData(x, y, 1, 1).data);
 };

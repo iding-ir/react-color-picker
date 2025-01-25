@@ -5,6 +5,7 @@ export type ColorCandyConfig = {
   width: number;
   color: string;
   canvas: HTMLCanvasElement | null;
+  isHovered: boolean;
 };
 
 export type ColorCandyState = {
@@ -20,4 +21,6 @@ export type ColorCandyState = {
   setColor: React.Dispatch<React.SetStateAction<string>>;
   canvas: HTMLCanvasElement | null;
   setCanvas: React.Dispatch<React.SetStateAction<HTMLCanvasElement | null>>;
+  isHovered: boolean;
+  setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
 };

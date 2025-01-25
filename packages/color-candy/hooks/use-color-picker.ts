@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-import { arrayToHex } from "../../../src/utils/array-to-hex";
 import { useColorCandy } from "../context/hook";
 import { pickColorFromCanvas } from "../methods/pick-color-from-canvas";
 
@@ -11,7 +10,7 @@ export const useColorPicker = ({
 }: {
   canvas: HTMLCanvasElement | null;
   isActive: boolean;
-  onSelect: (color: Uint8ClampedArray) => void;
+  onSelect: (color: string) => void;
 }) => {
   const { setColor, setIsActive } = useColorCandy();
 
@@ -40,7 +39,7 @@ export const useColorPicker = ({
         return;
       }
 
-      setColor(arrayToHex(color));
+      setColor(color);
     };
 
     canvas.addEventListener("pointerdown", onPointerDown);

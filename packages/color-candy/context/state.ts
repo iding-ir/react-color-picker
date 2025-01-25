@@ -9,6 +9,7 @@ export const useColorCandyState = (config: ColorCandyConfig) => {
   const [width, setWidth] = useState(config.width);
   const [color, setColor] = useState(config.color);
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   return {
     isActive,
@@ -23,5 +24,7 @@ export const useColorCandyState = (config: ColorCandyConfig) => {
     setColor,
     canvas,
     setCanvas,
+    isHovered,
+    setIsHovered,
   };
 };

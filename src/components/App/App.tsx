@@ -1,5 +1,5 @@
 import { Editor } from "../Editor";
-import { Wrappers } from "../Wrappers/Wrappers";
+import { Wrappers } from "../Wrappers";
 
 export const App = () => {
   return (

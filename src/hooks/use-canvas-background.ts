@@ -14,9 +14,6 @@ export const useCanvasBackground = ({
       return;
     }
 
-    setCanvasBackground({
-      canvas,
-      color,
-    });
+    setCanvasBackground({ canvas, color });
   }, [canvas, color]);
 };

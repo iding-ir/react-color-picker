@@ -31,6 +31,7 @@ export const ColorCandyProvider = ({
   width = DEFAULT_WIDTH,
   color = DEFAULT_COLOR,
   canvas = null,
+  isHovered = false,
 }: {
   children: ReactNode;
   isActive?: boolean;
@@ -39,6 +40,7 @@ export const ColorCandyProvider = ({
   width?: number;
   color?: string;
   canvas?: HTMLCanvasElement | null;
+  isHovered?: boolean;
 }) => {
   const value = useColorCandyState({
     isActive,
@@ -47,6 +49,7 @@ export const ColorCandyProvider = ({
     width,
     color,
     canvas,
+    isHovered,
   });
 
   return (

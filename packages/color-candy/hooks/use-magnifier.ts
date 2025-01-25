@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useColorCandy } from "../context/hook";
-import { magnifyCanvas } from "../methods/magnify-canvas";
+import { renderMagnifierCanvas } from "../methods/render-magnifier-canvas";
 
 export const useMagnifier = ({
   magnifier,
@@ -22,7 +22,7 @@ export const useMagnifier = ({
       const y = event.clientY - rect.top;
 
       setPosition({ x, y });
-      magnifyCanvas({ canvas, magnifier, x, y, radius, size });
+      renderMagnifierCanvas({ canvas, magnifier, x, y, radius, size });
     };
 
     canvas.addEventListener("pointermove", updatePosition);

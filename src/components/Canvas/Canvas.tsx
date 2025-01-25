@@ -12,7 +12,6 @@ import {
 import { selectPhoto } from "../../features/photo";
 import { useCanvasBackground } from "../../hooks/use-canvas-background";
 import { usePhoto } from "../../hooks/use-photo";
-import { arrayToHex } from "../../utils/array-to-hex";
 import styles from "./Canvas.module.scss";
 
 export const Canvas = () => {
@@ -33,18 +32,15 @@ export const Canvas = () => {
     setCanvas(canvasRef.current);
   }, [canvasRef, setCanvas]);
 
-  const handleSelect = (color: Uint8ClampedArray) => {
-    dispatch(setBackgroundColor(arrayToHex(color)));
+  const handleSelect = (color: string) => {
+    dispatch(setBackgroundColor(color));
   };
 
   const classNames = clsx(styles.container, {
     [styles.isActive]: isActive,
   });
 
-  const canvasProps = {
-    ...SIZE,
-    className: styles.canvas,
-  };
+  const canvasProps = { ...SIZE, className: styles.canvas };
 
   return (
     <div className={classNames} style={SIZE}>
