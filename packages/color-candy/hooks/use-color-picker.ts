@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { useColorCandy } from "../context/hook";
 import { pickColorFromCanvas } from "../methods/pick-color-from-canvas";
 import { renderMagnifierCanvas } from "../methods/render-magnifier-canvas";
+import { throttle } from "../utils/throttle";
 
 export const useColorPicker = ({
   onSelect,
@@ -30,7 +31,8 @@ export const useColorPicker = ({
       setIsActive(false);
     };
 
-    const onPointerMove = (event: PointerEvent) => {
+    // Use throttle with pointermove for better performance. use 16ms for 60fps framerate.
+    const onPointerMove = throttle((event: PointerEvent) => {
       // Replace getBoundingClientRect with offsetX and offsetY for better performance
       const x = event.offsetX;
       const y = event.offsetY;
@@ -57,7 +59,7 @@ export const useColorPicker = ({
         radius,
         size,
       });
-    };
+    }, 30);
 
     canvas.addEventListener("pointerdown", onPointerDown);
     canvas.addEventListener("pointermove", onPointerMove);
