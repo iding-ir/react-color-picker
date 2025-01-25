@@ -12,11 +12,11 @@ export const useColorPicker = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { radius, size, canvas, isActive, setColor, setIsActive } =
+  const { radius, size, canvas, isActive, isHovered, setColor, setIsActive } =
     useColorCandy();
 
   useEffect(() => {
-    if (!canvas || !isActive) {
+    if (!canvas || !isActive || !isHovered) {
       return;
     }
 
@@ -59,7 +59,7 @@ export const useColorPicker = ({
         radius,
         size,
       });
-    }, 30);
+    }, 16);
 
     canvas.addEventListener("pointerdown", onPointerDown);
     canvas.addEventListener("pointermove", onPointerMove);
@@ -68,7 +68,16 @@ export const useColorPicker = ({
       canvas.removeEventListener("pointerdown", onPointerDown);
       canvas.removeEventListener("pointermove", onPointerMove);
     };
-  }, [canvas, isActive, onSelect, radius, setColor, setIsActive, size]);
+  }, [
+    canvas,
+    isActive,
+    isHovered,
+    onSelect,
+    radius,
+    setColor,
+    setIsActive,
+    size,
+  ]);
 
   return { containerRef, canvasRef };
 };

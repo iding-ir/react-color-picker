@@ -10,20 +10,20 @@ export const useHover = () => {
       return;
     }
 
-    const onpointerenter = () => {
+    const onPointErenter = () => {
       setIsHovered(true);
     };
 
-    const onpointerleave = () => {
+    const onPointerLeave = () => {
       setIsHovered(false);
     };
 
-    canvas.addEventListener("pointerenter", onpointerenter);
-    canvas.addEventListener("pointerleave", onpointerleave);
+    canvas.addEventListener("pointerenter", onPointErenter);
+    canvas.addEventListener("pointerleave", onPointerLeave);
 
     return () => {
-      canvas.removeEventListener("pointerenter", onpointerenter);
-      canvas.removeEventListener("pointerleave", onpointerleave);
+      canvas.removeEventListener("pointerenter", onPointErenter);
+      canvas.removeEventListener("pointerleave", onPointerLeave);
     };
   }, [canvas, setIsHovered]);
 };
