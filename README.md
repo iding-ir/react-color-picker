@@ -1,26 +1,45 @@
 # Index
 
-- [Updates](#update)
 - [About](#about)
+- [Color Picker package](#color-picker-package)
+- [Screenshots](#screenshots)
+- [Usage](#usage)
 - [Tech stack](#tech-stack)
-- [Structure](#structure)
-- [Decision making](#decision-making)
-- [Choosing libraries](#choosing-libraries)
-- [Areas for improvement](#areas-for-improvement)
+- [Folder structure](#folder-structure)
 - [Installation](#installation)
 - [Run](#run)
 
-## Package
+## About
+This repository consists of:
+### 1. A React color picker package:
+- Has no dependency other than React.
+- It allows user to pick color from canvas.
+- It is optimized for performance through `React ref`, `throttling`, and use of GPU through `translate3d`, etc.
+### 2. A demo React App that consumes this package:
+Featuring file upload, canvas display and color swatch.
+
+## Color Picker package
 - Only dependency: React.
 - Color Picker uses React Context for its own internal state.
 - A magnifier component represents cursor when hovered on canvas.
 - Customizable through props.
 
-## About
-A mock React app that allows user to change the background of their canvas using either a:
-- color picker
-- text input
-- color swatch
+## Screenshots
+
+![Butterfly](https://raw.githubusercontent.com/iding-ir/react-color-picker/refs/heads/master/screenshots/butterfly.png)
+
+![Cat](https://raw.githubusercontent.com/iding-ir/react-color-picker/refs/heads/master/screenshots/cat.png)
+
+## Usage
+
+```jsx
+// radius: lense grid radius in number of items
+// size: size of a grid item in pixels
+// width: width of lense border for color preview
+<ColorCandyProvider radius={7} size={10} width={18}>
+  {children}
+</ColorCandyProvider>
+```
 
 ## Tech stack
 - `TypeScript`.
@@ -37,7 +56,7 @@ A mock React app that allows user to change the background of their canvas using
 ```
 packages/
   |- color-candy/             # Reusable color picker package
-src/                          # App files and assets
+src/                          # Mock app files and assets
   |- app/                     # Redux Toolkit folder that hosts store provider, hooks and the store.
   |- components/              # React components
   |- constants/               # Default values and app constants to hard-coded avoid magic numbers.
@@ -55,13 +74,6 @@ src/                          # App files and assets
   |- types/                         # Type declarations that may not belong to features.
   |- utils/                         # Good practice to keep reusable functions in utils
 ```
-
-## Areas for improvement
-- Writing tests: unit, integration, e2e.
-- Improve accessibility.
-- Error handling and error boundary.
-- Move app logics out of some component to keep them clean and reusable.
-- Use advanced React techniques like Ref Forwarding in some cases.
 
 ## Installation
 
